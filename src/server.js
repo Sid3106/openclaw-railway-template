@@ -188,6 +188,9 @@ async function startGateway() {
 
   console.log(`[gateway] ========== TOKEN SYNC COMPLETE ==========`);
 
+    // Set gateway.mode to local before starting gateway
+    await runCmd(OPENCLAW_NODE, clawArgs(["config", "set", "gateway.mode", "local"]));
+
   const args = [
     "gateway",
     "run",
