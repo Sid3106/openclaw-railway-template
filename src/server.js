@@ -192,8 +192,7 @@ async function startGateway() {
     await runCmd(OPENCLAW_NODE, clawArgs(["config", "set", "gateway.mode", "local"]));
 
     // Set gateway.trustedProxies to trust all proxies (Railway infrastructure)
-    await runCmd(OPENCLAW_NODE, clawArgs(["config", "set", "gateway.trustedProxies", '["*"]']));
-
+  await runCmd(OPENCLAW_NODE, clawArgs(["config", "set", "gateway.trustedProxies", '["0.0.0.0/0", "::/0"]']));
   const args = [
     "gateway",
     "run",
