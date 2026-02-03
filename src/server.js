@@ -192,8 +192,15 @@ async function startGateway() {
     await runCmd(OPENCLAW_NODE, clawArgs(["config", "set", "gateway.mode", "local"]));
 
     // Set gateway.trustedProxies to trust all proxies (Railway infrastructure)
-  await runCmd(OPENCLAW_NODE, clawArgs(["config", "set", "gateway.trustedProxies", '["0.0.0.0/0", "::/0"]']));
-  const args = [
+// Directly modify the config file to set trustedProxies
+    const cfgPath = configPath();
+    let cfg = {};
+    try { cfg = JSON.parse(fs.readFileSync(cfgPath, "utf8")); } catch {}
+    cfg.gateway = cfg.gateway || {};
+    cfg.gateway.trustedProxies = ["0.0.0.0/0", "::/0"];
+    fs.writeFileSync(cfgPath, JSON.stringify(cfg, null, 2));
+    console.log("[gateway] trustedProxies set to:", cfg.gateway.trustedProxies);
+    const args = [
     "gateway",
     "run",
     "--bind",
