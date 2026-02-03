@@ -197,8 +197,9 @@ async function startGateway() {
     String(INTERNAL_GATEWAY_PORT),
     "--auth",
     "token",
-    "--token",
+          "--token",
     OPENCLAW_GATEWAY_TOKEN,
+        "--allow-unconfigured",
   ];
 
   gatewayProc = childProcess.spawn(OPENCLAW_NODE, clawArgs(args), {
