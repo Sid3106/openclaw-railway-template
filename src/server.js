@@ -212,7 +212,6 @@ async function startGateway() {
           "--token",
     OPENCLAW_GATEWAY_TOKEN,
         "--allow-unconfigured",
-          "--trust-proxy",
   ];
 
   gatewayProc = childProcess.spawn(OPENCLAW_NODE, clawArgs(args), {
