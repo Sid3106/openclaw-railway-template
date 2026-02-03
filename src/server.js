@@ -212,6 +212,7 @@ async function startGateway() {
           "--token",
     OPENCLAW_GATEWAY_TOKEN,
         "--allow-unconfigured",
+          "--trust-proxy",
   ];
 
   gatewayProc = childProcess.spawn(OPENCLAW_NODE, clawArgs(args), {
@@ -489,7 +490,7 @@ function buildOnboardArgs(payload) {
       apiKey: "--anthropic-api-key",
       "openrouter-api-key": "--openrouter-api-key",
       "ai-gateway-api-key": "--ai-gateway-api-key",
-      "moonshot-api-key": "--moonshot-api-key",
+      "moonshot-api-key": "--moonshot-api-key"
       "kimi-code-api-key": "--kimi-code-api-key",
       "gemini-api-key": "--gemini-api-key",
       "zai-api-key": "--zai-api-key",
